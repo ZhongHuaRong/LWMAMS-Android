@@ -1,41 +1,58 @@
-TEMPLATE = app
+QT += quick qml core quickwidgets location network widgets webview
 
-QT += qml quick
-CONFIG += c++11
+android{
+QT += androidextras
+}
 
-SOURCES += main.cpp
+ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android-sources
 
-RESOURCES += qml.qrc
+SOURCES += \
+    ClientManagement.cpp \
+    main.cpp \
+    ChartViewData.cpp \
+    CodeArea.cpp \
+    DataShowPara.cpp \
+    DateData.cpp \
+    FileOperatorThread.cpp \
+    Manual.cpp \
+    MsgBox.cpp \
+    RouteManage.cpp \
+    RouteNode.cpp \
+    TableData.cpp \
+    TcpClient.cpp \
+    TipMsgBox.cpp \
+    TipMsgChart.cpp \
+    TipMsgRect.cpp \
+    TreeItem.cpp \
+    TreeModel.cpp
 
-# Additional import path used to resolve QML modules in Qt Creator's code model
-QML_IMPORT_PATH =
+OTHER_FILES += \
+    android-sources/src/org/qtproject/example/notification/NotificationClient.java \
+    android-sources/AndroidManifest.xml
 
-# Additional import path used to resolve QML modules just for Qt Quick Designer
-QML_DESIGNER_IMPORT_PATH =
+RESOURCES += \
+    main.qrc
 
-# The following define makes your compiler emit warnings if you use
-# any feature of Qt which as been marked deprecated (the exact warnings
-# depend on your compiler). Please consult the documentation of the
-# deprecated API in order to know how to port your code away from it.
-DEFINES += QT_DEPRECATED_WARNINGS
+HEADERS += \
+    ClientManagement.h \
+    ChartViewData.h \
+    CodeArea.h \
+    DataShowPara.h \
+    DateData.h \
+    FileOperatorThread.h \
+    Manual.h \
+    MsgBox.h \
+    RouteManage.h \
+    RouteNode.h \
+    TableData.h \
+    TcpClient.h \
+    TipMsgBox.h \
+    TipMsgChart.h \
+    TipMsgRect.h \
+    TreeItem.h \
+    TreeModel.h
 
-# You can also make your code fail to compile if you use deprecated APIs.
-# In order to do so, uncomment the following line.
-# You can also select to disable deprecated APIs only up to a certain version of Qt.
-#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
+target.path = $$[QT_INSTALL_EXAMPLES]/androidextras/notification
+INSTALLS += target
 
-# Default rules for deployment.
-qnx: target.path = /tmp/$${TARGET}/bin
-else: unix:!android: target.path = /opt/$${TARGET}/bin
-!isEmpty(target.path): INSTALLS += target
-
-DISTFILES += \
-    android/AndroidManifest.xml \
-    android/gradle/wrapper/gradle-wrapper.jar \
-    android/gradlew \
-    android/res/values/libs.xml \
-    android/build.gradle \
-    android/gradle/wrapper/gradle-wrapper.properties \
-    android/gradlew.bat
-
-ANDROID_PACKAGE_SOURCE_DIR = $$PWD/android
+FORMS +=
